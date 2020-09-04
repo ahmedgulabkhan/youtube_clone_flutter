@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone_flutter/models/user.dart';
+import 'package:youtube_clone_flutter/pages/user_profile_page.dart';
 import 'package:youtube_clone_flutter/tabs/home_tab.dart';
 import 'package:youtube_clone_flutter/tabs/notifications_tab.dart';
 import 'package:youtube_clone_flutter/tabs/explore_tab.dart';
@@ -66,7 +67,12 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(width: 15.0,),
                     Icon(Icons.search),
                     SizedBox(width: 15.0,),
-                    CircleAvatar(backgroundImage: currentUser.profilePicture, radius: 20,),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfilePage(currentUser: currentUser)));
+                      },
+                      child: CircleAvatar(backgroundImage: currentUser.profilePicture, radius: 20,)
+                    ),
                 ],
               )
             ],
